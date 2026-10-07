@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% from "_macros.html" import stat %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p class="lead">Multi-task screening classifier for <b>sentiment</b>, <b>emotion</b> and <b>stress-related (distress) language</b>. Every number below is loaded from evaluation artefacts produced by <code>scripts/evaluate.py</code>.</p>
+<div class="grid">
+  {{ stat("Models loaded", (loaded | join(", ")) if loaded else "Not available", "checkpoints found on disk") }}
+  {{ stat("Inference device", device) }}
+  {{ stat("Calibration", "Temperature scaling" if calibration != "Not available" else "Not available", calibration if calibration != "Not available" else "") }}
+  {{ stat("Reference model", best.display_name if best else "Not available", "figures below are for this model (test split)") }}
+</div>
+<h2>Test-set performance {% if best %}<small>· {{ best.display_name }}</small>{% endif %}</h2>
+<div class="grid">
+  {{ stat("Sentiment macro-F1", best.sentiment_macro_f1 | fmt if best else "Not available", "English + Hinglish tweets/comments") }}
+  {{ stat("Emotion macro-F1", best.emotion_macro_f1 | fmt if best else "Not available", "English + Hindi (Devanagari)") }}
+  {{ stat("Risk (stress) F1", best.risk_f1 | fmt if best else "Not available", "positive class = stress · English only") }}
+  {{ stat("Risk PR-AUC", best.risk_pr_auc | fmt if best else "Not available", "average precision") }}
+</div>
+<div class="two">
+  <section class="card">
+    <h3>Datasets (one per task - different populations)</h3>
+    {% if stats %}
+    <table><tr><th>Task</th><th>Source</th><th>Train / Val / Test</th></tr>
+    {% for task, s in stats.items() %}<tr><td>{{ task }}</td><td>{{ s.by_source.keys() | join(", ") }}</td><td>{{ s.by_split.train }} / {{ s.by_split.val }} / {{ s.by_split.test }}</td></tr>{% endfor %}
+    </table>
+    {% else %}<p class="muted">Not available - run <code>scripts/prepare_data.py</code>.</p>{% endif %}
+    <p class="muted">See <code>DATASET.md</code> for licenses, label definitions and limitations.</p>
+  </section>
+  <section class="card">
+    <h3>Languages with evaluation data</h3>
+    <table><tr><th>Language / script</th><th>Evaluated tasks</th></tr>
+    {% for l in supported %}<tr><td>{{ l.name }} <code>{{ l.tag }}</code></td><td>{{ l.tasks | join(", ") }}</td></tr>{% endfor %}
+    </table>
+    <p class="muted">Other languages are not evaluated; outputs for them are unvalidated.</p>
+  </section>
+</div>
+{% endblock %}

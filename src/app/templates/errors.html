@@ -1,0 +1,35 @@
+{% extends "base.html" %}{% from "_macros.html" import confusion %}
+{% block title %}Error Analysis{% endblock %}
+{% block content %}
+<h1>Error analysis</h1>
+<p class="lead">Misclassified <b>test</b> examples, identified by anonymised IDs only - raw text is deliberately not shown (Reddit/Twitter/YouTube-derived, potentially sensitive).</p>
+{% if rows is none %}<div class="alert warn">Not available - run <code>scripts/evaluate.py</code>.</div>{% else %}
+<form method="get" class="card filters">
+  {% for key, label in (("language","Language"),("task","Task"),("model","Model"),("prediction","Predicted label")) %}
+  <div><label>{{ label }}</label><select name="{{ key }}"><option value="">All</option>{% for o in opts[key] %}<option value="{{ o }}" {{ 'selected' if sel[key] == o else '' }}>{{ o }}</option>{% endfor %}</select></div>
+  {% endfor %}
+  <button class="btn" type="submit">Filter</button>
+</form>
+<p><b>{{ total }}</b> matching errors{% if total > rows | length %} (showing first {{ rows | length }}){% endif %}.</p>
+<div class="card scroll"><table class="small">
+<tr><th>text_id</th><th>model</th><th>task</th><th>language</th><th>error type</th><th>true</th><th>predicted</th><th>risk prob.</th><th>length</th></tr>
+{% for r in rows %}<tr><td><code>{{ r.text_id }}</code></td><td>{{ r.model }}</td><td>{{ r.task }}</td><td>{{ r.language }}</td><td>{{ r.error_type }}</td>
+<td>{{ r.true_sentiment or r.true_emotion or r.true_risk }}</td><td>{{ r.predicted_sentiment or r.predicted_emotion or r.predicted_risk }}</td><td>{{ r.risk_probability if r.risk_probability != "" else "" }}</td><td>{{ r.length_bucket }}</td></tr>{% endfor %}
+</table></div>
+{% endif %}
+{% if summary %}
+<h2>Summary by model</h2>
+{% for mname, s in summary.items() %}{% if not sel.model or sel.model == mname %}
+<section class="card"><h3>{{ display.get(mname, mname) }}</h3>
+<div class="three">
+{% for task, t in s.by_task.items() %}<div><h4>{{ task }}</h4>
+<p>{{ t.errors }} / {{ t.n }} errors ({{ t.error_rate | fmt }}){% if task == 'risk' %}<br>false positives: {{ t.false_positives }} · false negatives: {{ t.false_negatives }}{% endif %}</p>
+<table class="small"><tr><th>language</th><th>errors</th><th>rate</th></tr>{% for l, v in t.by_language.items() %}<tr><td>{{ l }}</td><td>{{ v.errors }}/{{ v.n }}</td><td>{{ v.error_rate | fmt }}</td></tr>{% endfor %}</table>
+<table class="small"><tr><th>length</th><th>errors</th><th>rate</th></tr>{% for l, v in t.by_length_bucket.items() %}<tr><td>{{ l }}</td><td>{{ v.errors }}/{{ v.n }}</td><td>{{ v.error_rate | fmt }}</td></tr>{% endfor %}</table>
+{% if task != 'emotion' %}{{ confusion(t.confusion_matrix, t.labels) }}{% endif %}</div>{% endfor %}
+</div>
+{% set x = s.sentiment_vs_risk_on_risk_test_texts %}
+<p class="muted"><b>Sentiment vs risk (exploratory, same texts):</b> {{ x.share_true_stress_predicted_negative_sentiment | fmt }} of truly-stressed posts get negative predicted sentiment vs {{ x.share_true_nonstress_predicted_negative_sentiment | fmt }} of non-stress posts. {{ x.note }}</p>
+</section>{% endif %}{% endfor %}
+{% endif %}
+{% endblock %}

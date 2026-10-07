@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Playground{% endblock %}
+{% block content %}
+<h1>Model playground</h1>
+<p class="lead">Compare the BiLSTM and the multilingual transformer side by side on the same input.</p>
+<form id="play-form" class="card form">
+  <label for="text">Text</label>
+  <textarea id="text" rows="4" maxlength="5000" required placeholder="Type or paste text…"></textarea>
+  <div class="row"><button type="submit" class="btn">Compare models</button></div>
+</form>
+<div id="error" class="alert err" hidden></div>
+<div class="two" id="play-out"></div>
+{% endblock %}

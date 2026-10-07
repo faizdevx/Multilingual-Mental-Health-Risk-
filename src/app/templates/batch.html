@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Batch{% endblock %}
+{% block content %}
+<h1>Batch analysis</h1>
+<p class="lead">Upload a CSV with a <code>text</code> column (optional: <code>id</code>, <code>language</code> such as <code>en-Latn</code>, <code>hi-Deva</code>, <code>hi-Latn</code>). Up to {{ max_rows }} rows. The file is processed in memory - <b>nothing is written to disk or stored</b>; the results CSV is built in your browser.</p>
+<form id="batch-form" class="card form">
+  <div class="row">
+    <div><label for="file">CSV file</label><input type="file" id="file" accept=".csv,text/csv" required></div>
+    <div><label for="model">Model</label><select id="model">{% for m in models %}<option value="{{ m }}" {{ 'selected' if m == 'transformer' else '' }}>{{ display.get(m, m) }}</option>{% endfor %}</select></div>
+    <button class="btn" type="submit">Run batch</button>
+    <button class="btn ghost" type="button" id="download" hidden>Download results CSV</button>
+  </div>
+</form>
+<div id="error" class="alert err" hidden></div>
+<div id="batch-out" class="card scroll" hidden></div>
+{% endblock %}

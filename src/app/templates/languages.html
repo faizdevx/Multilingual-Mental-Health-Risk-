@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% from "_macros.html" import bar %}
+{% block title %}Language Analysis{% endblock %}
+{% block content %}
+<h1>Language analysis</h1>
+<p class="lead">Macro-F1 on the test split, per language/script, for every model. Only languages that exist in the evaluation data of a task are shown - the three tasks come from different datasets, so some cells are intentionally absent.</p>
+{% if not table %}<div class="alert warn">Not available - run <code>scripts/evaluate.py</code>.</div>{% endif %}
+{% for task, langs in table.items() %}
+<section class="card"><h3>{{ task | capitalize }} {% if task == 'risk' %}<small>(English only: no labelled data in other languages)</small>{% endif %}</h3>
+{% for lang, models_ in langs.items() %}
+  <h4>{{ lang }} <small>n = {{ (models_.values() | first).n }}</small></h4>
+  {% for mname, m in models_.items() %}{{ bar(display.get(mname, mname), m.macro_f1, "") }}{% endfor %}
+{% endfor %}</section>
+{% endfor %}
+{% if by_source %}
+<section class="card"><h3>Sentiment macro-F1 by source dataset</h3>
+<p class="muted"><code>hi-Latn</code> combines two sources: Romanized-Hindi tweets and Hinglish YouTube comments. Tweets labelled "hindi" are Latin-script and some are plain English.</p>
+{% for mname, tasks in by_source.items() %}{% if tasks.sentiment %}<h4>{{ display.get(mname, mname) }}</h4>
+{% for src, m in tasks.sentiment.items() %}{{ bar(src, m.macro_f1) }}{% endfor %}{% endif %}{% endfor %}</section>
+{% endif %}
+<section class="card"><h3>Language / script detection</h3>
+{% if langid %}<table><tr><th>Evaluation set</th><th>n</th><th>Result</th></tr>
+{% for k, v in langid.evaluation.items() %}<tr><td>{{ k }}</td><td>{{ v.n }}</td><td>{% if v.accuracy is defined %}accuracy {{ v.accuracy | fmt }}{% else %}share predicted hi-Latn {{ v["share_predicted_hi-Latn"] | fmt }}{% endif %}</td></tr>{% endfor %}</table>
+<ul class="muted">{% for c in langid.caveats %}<li>{{ c }}</li>{% endfor %}</ul>{% else %}<p class="muted">Not available</p>{% endif %}</section>
+{% endblock %}

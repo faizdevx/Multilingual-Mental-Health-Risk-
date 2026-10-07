@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Dashboard{% endblock %} · MH Risk &amp; Sentiment Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><span class="logo">◈</span><div><b>MH Risk &amp; Sentiment</b><small>Multilingual NLP · research</small></div></div>
+    <nav>
+      {% for href, label in nav %}<a href="{{ href }}" class="{{ 'active' if path == href else '' }}">{{ label }}</a>{% endfor %}
+    </nav>
+    <div class="side-foot">v{{ version }}<br>Screening / research only</div>
+  </aside>
+  <main>
+    <div class="banner" role="note"><b>Not a diagnostic tool.</b> {{ disclaimer }}</div>
+    {% block content %}{% endblock %}
+    <footer>{{ prob_note }} · No submitted text is logged or stored.</footer>
+  </main>
+</div>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

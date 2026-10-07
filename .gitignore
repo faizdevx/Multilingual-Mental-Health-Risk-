@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Data: raw/processed text is NOT redistributed (Reddit/Twitter/YouTube-derived; see DATASET.md)
+data/raw/
+data/processed/
+data/uploads/
+*.upload.csv
+uploads/
+tmp_uploads/
+
+# Model checkpoints (large; regenerate with scripts/)
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Logs / local env
+logs/
+*.log
+.env
+.env.*
+.DS_Store
