@@ -2,6 +2,7 @@
 (function () {
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  const cap = (x) => (x ? x.charAt(0).toUpperCase() + x.slice(1) : x);
   const fmt = (x) => (x === null || x === undefined ? "Not available" : typeof x === "number" ? x.toFixed(3) : String(x));
   const showErr = (msg) => { const b = $("error"); if (!b) return; b.textContent = msg; b.hidden = !msg; };
   async function post(url, body) {
@@ -20,8 +21,8 @@
     container.replaceChildren(
       card("Language", r.language_name + " (" + r.language + ")", "confidence " + fmt(r.language_confidence) + " · " + r.language_method),
       card("Script", r.script, "tag " + r.language_tag),
-      card("Sentiment", r.sentiment, null, r.sentiment_probabilities),
-      card("Emotion", r.emotion === "none" ? "none above threshold" : r.emotion, r.emotions_detected.length > 1 ? "also: " + r.emotions_detected.slice(1).map((e) => e.label).join(", ") : null, r.emotion_probabilities),
+      card("Sentiment", cap(r.sentiment), null, r.sentiment_probabilities),
+      card("Emotion", r.emotion === "none" ? "None above threshold" : cap(r.emotion), r.emotions_detected.length > 1 ? "also: " + r.emotions_detected.slice(1).map((e) => e.label).join(", ") : null, r.emotion_probabilities),
       card("Risk signal", r.risk_signal, "Probability (stress class): " + r.risk_probability.toFixed(2) + " · model label: " + r.risk),
       card("Inference latency", r.inference_latency_ms + " ms", r.model_display_name + " · " + r.device));
   }

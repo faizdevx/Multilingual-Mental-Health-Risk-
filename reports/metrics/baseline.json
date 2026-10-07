@@ -951,12 +951,12 @@
     }
   },
   "inference_latency_ms": {
-    "median": 4.472000000077969,
-    "p95": 5.735210800071399,
+    "median": 3.9006099996186094,
+    "p95": 4.043933400680544,
     "device": "cpu",
     "n_runs": 15
   },
   "architecture": "TF-IDF (word 1-2g + char 2-5g) + Logistic Regression, one model per task",
   "display_name": "TF-IDF + LogReg",
-  "evaluated_at": "2026-10-07T07:30:41+00:00"
+  "evaluated_at": "2026-10-07T09:46:41+00:00"
 }
