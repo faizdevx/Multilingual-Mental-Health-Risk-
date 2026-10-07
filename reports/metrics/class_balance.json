@@ -1,0 +1,55 @@
+{
+  "sentiment": {
+    "strategy": "none (imbalance ratio <= 1.5; not justified)",
+    "counts": [
+      2381,
+      1691,
+      1782
+    ],
+    "imbalance_ratio": 1.408,
+    "class_weight": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "emotion": {
+    "strategy": "BCE with pos_weight = clip(sqrt(neg/pos), 1, 5), computed per label over annotated rows only",
+    "positives": [
+      654,
+      228,
+      1730,
+      965,
+      1159,
+      968
+    ],
+    "negatives": [
+      3968,
+      2015,
+      2892,
+      3657,
+      3463,
+      3654
+    ],
+    "pos_weight": [
+      2.463,
+      2.973,
+      1.293,
+      1.947,
+      1.729,
+      1.943
+    ]
+  },
+  "risk": {
+    "strategy": "none (imbalance ratio <= 1.5; not justified)",
+    "counts": [
+      1140,
+      1251
+    ],
+    "imbalance_ratio": 1.097,
+    "class_weight": [
+      1.0,
+      1.0
+    ]
+  }
+}
