@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Analyze{% endblock %}
+{% block content %}
+<h1>Analyze text</h1>
+<p class="lead">Runs real model inference on your text. Text is processed in memory and is not logged or stored.</p>
+<form id="analyze-form" class="card form">
+  <label for="text">Text</label>
+  <textarea id="text" rows="6" maxlength="5000" placeholder="Type or paste text (English, Hindi, or Romanized Hindi)…" required></textarea>
+  <div class="row">
+    <div><label for="language">Language</label>
+      <select id="language"><option value="auto">Auto</option><option value="en-Latn">English</option><option value="hi-Deva">Hindi (Devanagari)</option><option value="hi-Latn">Hinglish / Romanized Hindi</option></select></div>
+    <div><label for="model">Model</label>
+      <select id="model">{% for m in models %}<option value="{{ m }}" {{ 'selected' if m == 'transformer' else '' }}>{{ display.get(m, m) }}</option>{% endfor %}{% if not models %}<option value="">No model loaded</option>{% endif %}</select></div>
+    <div class="check"><label><input type="checkbox" id="explain"> Show model attribution</label></div>
+    <button type="submit" class="btn">Analyze Text</button>
+  </div>
+</form>
+<div id="error" class="alert err" hidden></div>
+<div id="result" hidden>
+  <div id="safety" class="alert warn" hidden></div>
+  <div class="grid" id="cards"></div>
+  <div id="warnings"></div>
+  <div id="explain-box" class="card" hidden></div>
+</div>
+{% endblock %}

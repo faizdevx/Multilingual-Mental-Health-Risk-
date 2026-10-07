@@ -1,0 +1,206 @@
+{
+  "baseline": {
+    "by_task": {
+      "sentiment": {
+        "n": 2213,
+        "errors": 1111,
+        "error_rate": 0.5020334387708992,
+        "by_language": {
+          "en-Latn": {
+            "n": 870,
+            "errors": 421,
+            "error_rate": 0.4839080459770115
+          },
+          "hi-Latn": {
+            "n": 1343,
+            "errors": 690,
+            "error_rate": 0.5137751303052867
+          }
+        },
+        "by_source": {
+          "tweets-english": {
+            "n": 870,
+            "errors": 421,
+            "error_rate": 0.4839080459770115
+          },
+          "tweets-hindi": {
+            "n": 866,
+            "errors": 437,
+            "error_rate": 0.5046189376443418
+          },
+          "youtube-hinglish": {
+            "n": 477,
+            "errors": 253,
+            "error_rate": 0.5303983228511531
+          }
+        },
+        "by_length_bucket": {
+          "long(40+)": {
+            "n": 23,
+            "errors": 10,
+            "error_rate": 0.43478260869565216
+          },
+          "medium(8-39)": {
+            "n": 1707,
+            "errors": 852,
+            "error_rate": 0.4991212653778559
+          },
+          "short(<8)": {
+            "n": 483,
+            "errors": 249,
+            "error_rate": 0.515527950310559
+          }
+        },
+        "confusion_matrix": [
+          [
+            498,
+            119,
+            91
+          ],
+          [
+            312,
+            245,
+            141
+          ],
+          [
+            298,
+            150,
+            359
+          ]
+        ],
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ]
+      },
+      "emotion": {
+        "n": 3769,
+        "errors": 2664,
+        "error_rate": 0.7068187848235606,
+        "by_language": {
+          "en-Latn": {
+            "n": 2759,
+            "errors": 2230,
+            "error_rate": 0.8082638637187387
+          },
+          "hi-Deva": {
+            "n": 1010,
+            "errors": 434,
+            "error_rate": 0.4297029702970297
+          }
+        },
+        "by_source": {
+          "brighter-eng": {
+            "n": 2759,
+            "errors": 2230,
+            "error_rate": 0.8082638637187387
+          },
+          "brighter-hin": {
+            "n": 1010,
+            "errors": 434,
+            "error_rate": 0.4297029702970297
+          }
+        },
+        "by_length_bucket": {
+          "long(40+)": {
+            "n": 115,
+            "errors": 92,
+            "error_rate": 0.8
+          },
+          "medium(8-39)": {
+            "n": 2974,
+            "errors": 2028,
+            "error_rate": 0.6819098856758574
+          },
+          "short(<8)": {
+            "n": 680,
+            "errors": 544,
+            "error_rate": 0.8
+          }
+        },
+        "confusion_matrix": null,
+        "labels": [
+          "anger",
+          "disgust",
+          "fear",
+          "joy",
+          "sadness",
+          "surprise"
+        ],
+        "label_disagreements": {
+          "anger": 440,
+          "disgust": 45,
+          "fear": 1071,
+          "joy": 1056,
+          "sadness": 1257,
+          "surprise": 913
+        }
+      },
+      "risk": {
+        "n": 715,
+        "errors": 185,
+        "error_rate": 0.25874125874125875,
+        "by_language": {
+          "en-Latn": {
+            "n": 715,
+            "errors": 185,
+            "error_rate": 0.25874125874125875
+          }
+        },
+        "by_source": {
+          "dreaddit": {
+            "n": 715,
+            "errors": 185,
+            "error_rate": 0.25874125874125875
+          }
+        },
+        "by_length_bucket": {
+          "long(40+)": {
+            "n": 693,
+            "errors": 180,
+            "error_rate": 0.2597402597402597
+          },
+          "medium(8-39)": {
+            "n": 22,
+            "errors": 5,
+            "error_rate": 0.22727272727272727
+          }
+        },
+        "confusion_matrix": [
+          [
+            237,
+            109
+          ],
+          [
+            76,
+            293
+          ]
+        ],
+        "labels": [
+          "non_stress",
+          "stress"
+        ],
+        "false_positives": 109,
+        "false_negatives": 76
+      }
+    },
+    "sentiment_vs_risk_on_risk_test_texts": {
+      "note": "Exploratory only: the sentiment head was never validated on Dreaddit texts (different population/domain).",
+      "crosstab": {
+        "non_stress": {
+          "negative": 220,
+          "neutral": 42,
+          "positive": 51
+        },
+        "stress": {
+          "negative": 354,
+          "neutral": 21,
+          "positive": 27
+        }
+      },
+      "share_true_stress_predicted_negative_sentiment": 0.8943089430894309,
+      "share_true_nonstress_predicted_negative_sentiment": 0.7052023121387283
+    }
+  }
+}

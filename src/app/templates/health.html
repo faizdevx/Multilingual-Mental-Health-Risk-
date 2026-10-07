@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% from "_macros.html" import stat %}
+{% block title %}Health{% endblock %}
+{% block content %}
+<h1>System health</h1>
+<div class="grid">
+  {{ stat("API", "Healthy") }}
+  {{ stat("Models", "Loaded" if loaded else "Not loaded", (loaded | join(", ")) if loaded else "no checkpoints found") }}
+  {{ stat("Dataset", "Available" if dataset else "Not available", "processed tables in data/processed") }}
+  {{ stat("Device", device) }}
+  {{ stat("PyTorch", torch_v) }}
+  {{ stat("Transformers", tf_v) }}
+  {{ stat("Python", py) }}
+  {{ stat("Uptime", uptime ~ " s") }}
+</div>
+<div class="two">
+<section class="card"><h3>Model checkpoints</h3><table><tr><th>Model</th><th>On disk</th><th>Loaded</th></tr>
+{% for n, c in ckpts.items() %}<tr><td>{{ n }}</td><td>{{ "yes" if c.present else "no" }}</td><td>{{ "yes" if c.loaded else ("load failed" if c.failed else "no") }}</td></tr>{% endfor %}</table></section>
+<section class="card"><h3>Evaluation artifacts</h3><table><tr><th>Artifact</th><th>Present</th></tr>
+{% for n, ok in artifacts.items() %}<tr><td><code>{{ n }}</code></td><td>{{ "yes" if ok else "no" }}</td></tr>{% endfor %}</table></section>
+</div>
+{% endblock %}

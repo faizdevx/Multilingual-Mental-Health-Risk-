@@ -1,0 +1,45 @@
+{
+  "training": {
+    "hi-Latn": 2210,
+    "en-Latn": 2208
+  },
+  "evaluation": {
+    "youtube-hinglish test (hi-Latn)": {
+      "n": 477,
+      "accuracy": 0.9140461215932913,
+      "predicted_distribution": {
+        "hi-Latn": 436,
+        "en-Latn": 41
+      }
+    },
+    "english tests (tweets/brighter/dreaddit)": {
+      "n": 1431,
+      "accuracy": 0.9951083158630328,
+      "predicted_distribution": {
+        "en-Latn": 1424,
+        "hi-Latn": 7
+      }
+    },
+    "brighter-hin test (hi-Deva)": {
+      "n": 1010,
+      "accuracy": 0.9861386138613861,
+      "predicted_distribution": {
+        "hi-Deva": 996,
+        "mr-Deva": 14
+      }
+    },
+    "tweets-hindi test (NOISY PROBE: Romanized, includes plain-English tweets)": {
+      "n": 866,
+      "share_predicted_hi-Latn": 0.7413394919168591,
+      "predicted_distribution": {
+        "hi-Latn": 642,
+        "en-Latn": 223,
+        "tr-Latn": 1
+      }
+    }
+  },
+  "caveats": [
+    "hi-Latn positives come from a single YouTube-comment corpus; English negatives from other platforms: style confound is possible.",
+    "Only en-Latn, hi-Latn and script-level detection were evaluated. Other languages are NOT evaluated."
+  ]
+}

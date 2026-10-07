@@ -1,0 +1,13 @@
+{% macro stat(label, value, sub='') %}
+<div class="card stat"><div class="k">{{ label }}</div><div class="v">{{ value }}</div>{% if sub %}<div class="s">{{ sub }}</div>{% endif %}</div>
+{% endmacro %}
+{% macro bar(label, value, note='') %}
+<div class="bar-row"><span class="bar-label">{{ label }}</span>
+  <span class="bar-track"><span class="bar-fill" style="width: {{ value | pct }}%"></span></span>
+  <span class="bar-val">{{ value | fmt }}</span>{% if note %}<span class="bar-note">{{ note }}</span>{% endif %}</div>
+{% endmacro %}
+{% macro confusion(cm, labels) %}
+{% if cm %}<table class="cm"><tr><th>true ↓ / pred →</th>{% for l in labels %}<th>{{ l }}</th>{% endfor %}</tr>
+{% for row in cm %}{% set i = loop.index0 %}<tr><th>{{ labels[i] }}</th>{% for v in row %}<td class="{{ 'diag' if loop.index0 == i else '' }}">{{ v }}</td>{% endfor %}</tr>{% endfor %}</table>
+{% else %}<p class="muted">Not available</p>{% endif %}
+{% endmacro %}

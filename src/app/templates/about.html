@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<h1>About</h1>
+<section class="card">
+<h3>What this is</h3>
+<p>A research / portfolio NLP system that classifies <b>sentiment</b>, <b>emotion</b> and <b>stress-related language</b> in text and reports calibrated model probabilities and model uncertainty. It is a <b>screening / research classifier</b>.</p>
+<p><b>It is not</b> a diagnostic tool. It does not diagnose depression, anxiety, PTSD or any disorder, cannot tell whether someone has a mental illness, does not predict suicide risk, and must not replace a clinician.</p>
+<h3>What the "risk" output actually is</h3>
+<p>The risk head is trained on <b>Dreaddit</b> (English Reddit posts from stress-related communities, crowd-annotated for <i>stress</i>). Its label is <code>stress</code> / <code>non_stress</code>. No dataset used here defines suicide-risk or severity levels, so the system never outputs such categories. The probability is a statistical model output (temperature-scaled on a validation split) and is <b>not a clinical probability</b>.</p>
+<h3>Languages</h3>
+<ul>{% for l in supported %}<li><b>{{ l.name }}</b> (<code>{{ l.tag }}</code>) - labelled evaluation data for: {{ l.tasks | join(", ") }}</li>{% endfor %}</ul>
+<p>Multilingual support is limited to the evaluated languages. Risk is evaluated on English only; for Hindi / Hinglish the risk output is an unvalidated zero-shot transfer.</p>
+<h3>Datasets (separate populations, never merged into one label space)</h3>
+<ul><li><b>Risk:</b> Dreaddit (Turcan &amp; McKeown, 2019)</li><li><b>Sentiment:</b> Tweet Sentiment Multilingual (Barbieri et al., 2022; English + Romanized-Hindi tweets) and a Hinglish YouTube-comment corpus</li><li><b>Emotion:</b> BRIGHTER / SemEval-2025 Task 11 (English + Hindi)</li></ul>
+<p>Full cards, licenses and limitations: <code>DATASET.md</code>.</p>
+<h3>Privacy</h3>
+<p>Submitted text is processed in memory, never logged, printed or stored. Logs hold only request ID, timestamp, route, status, latency and model version.</p>
+<h3>If you or someone else may be in distress</h3>
+<p>This tool cannot help with that. Please contact a qualified professional or local emergency/crisis service. International directories (choose your own country): <a href="https://findahelpline.com" rel="noopener">findahelpline.com</a> · <a href="https://www.iasp.info/crisis-centres-helplines/" rel="noopener">IASP crisis centres</a>.</p>
+</section>
+{% endblock %}

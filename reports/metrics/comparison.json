@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-10-07T07:30:42+00:00",
+  "note": "All numbers are measured on held-out test splits; the three tasks come from different datasets/populations. Sentiment F1 pools English + Hinglish test sets; emotion F1 pools English + Hindi; risk is English only.",
+  "models": [
+    {
+      "name": "baseline",
+      "display_name": "TF-IDF + LogReg",
+      "architecture": "TF-IDF (word 1-2g + char 2-5g) + Logistic Regression, one model per task",
+      "parameters": 1159030,
+      "sentiment_macro_f1": 0.488779807628529,
+      "sentiment_weighted_f1": 0.49027153216213204,
+      "emotion_macro_f1": 0.6117596088314728,
+      "emotion_weighted_f1": 0.6158399630849329,
+      "risk_f1": 0.7600518806744487,
+      "risk_macro_f1": 0.7396617521733397,
+      "risk_recall": 0.7940379403794038,
+      "risk_precision": 0.7288557213930348,
+      "risk_pr_auc": 0.8426471925409413,
+      "risk_roc_auc": 0.8258455127903881,
+      "risk_ece": 0.03907573229347042,
+      "risk_brier": 0.17109497017603364,
+      "risk_ece_uncalibrated": 0.06018646647185097,
+      "inference_latency_ms": 4.472000000077969,
+      "inference_device": "cpu",
+      "checkpoint_status": "available"
+    }
+  ]
+}

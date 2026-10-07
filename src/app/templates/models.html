@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Model Comparison{% endblock %}
+{% block content %}
+<h1>Model comparison</h1>
+<p class="lead">All values are loaded from <code>reports/metrics/comparison.json</code> (held-out test splits). {% if comp %}{{ comp.note }}{% endif %}</p>
+<div class="card scroll"><table>
+<tr><th>Model</th><th>Architecture</th><th>Parameters</th><th>Sentiment F1</th><th>Emotion F1</th><th>Risk F1</th><th>Risk PR-AUC</th><th>Risk ECE</th><th>Latency (ms)</th><th>Checkpoint</th></tr>
+{% for r in rows %}<tr><td><b>{{ r.display_name }}</b></td><td class="small">{{ r.architecture }}</td>
+<td>{{ "{:,}".format(r.parameters) if r.parameters else "Not available" }}</td>
+<td>{{ r.sentiment_macro_f1 | fmt }}</td><td>{{ r.emotion_macro_f1 | fmt }}</td><td>{{ r.risk_f1 | fmt }}</td><td>{{ r.risk_pr_auc | fmt }}</td><td>{{ r.risk_ece | fmt }}</td>
+<td>{{ r.inference_latency_ms | fmt(1) }}</td><td>{{ r.checkpoint_status }}</td></tr>{% endfor %}
+</table></div>
+<p class="muted">Sentiment/emotion F1 are <b>macro</b>-F1. Risk F1 is for the <code>stress</code> class. Latency = median single-text time for all three heads on the stated device. Datasets differ per task - see <code>DATASET.md</code>.</p>
+{% for name, h in history.items() %}{% if h %}
+<h3>{{ display.get(name, name) }} - training history</h3>
+<div class="card scroll"><table><tr><th>Epoch</th><th>Train loss (sent / emo / risk)</th><th>Val loss (sent / emo / risk)</th><th>Val macro-F1 (sent / emo / risk)</th></tr>
+{% for e in h.history %}<tr><td>{{ e.epoch }}</td>
+<td>{{ e.train_loss.sentiment | fmt }} / {{ e.train_loss.emotion | fmt }} / {{ e.train_loss.risk | fmt }}</td>
+<td>{{ e.val_loss.sentiment | fmt }} / {{ e.val_loss.emotion | fmt }} / {{ e.val_loss.risk | fmt }}</td>
+<td>{{ e.val.sentiment.macro_f1 | fmt }} / {{ e.val.emotion.macro_f1 | fmt }} / {{ e.val.risk.macro_f1 | fmt }}</td></tr>{% endfor %}
+</table></div>{% endif %}{% endfor %}
+{% endblock %}
