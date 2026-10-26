@@ -145,7 +145,79 @@ Per-example errors (anonymised IDs, no text): [`reports/error_analysis.csv`](rep
 
 Submitted text is processed in memory and never logged, printed, or stored. `src/privacy.py` logs only whitelisted metadata (request ID, timestamp, route, status, latency, model version, language tag, risk label); any other field is dropped (unit-tested with a marker string across `/predict`, explain and batch). Validation errors don't echo input. Batch CSVs are read into memory and discarded (nothing is written to disk; results CSV is built in the browser); size/row limits apply; spreadsheet-formula injection in echoed IDs is neutralised. `data/`, checkpoints, uploads and logs are git-ignored. Identifiers (emails, phones, URLs, @mentions) are masked before text reaches a model. No user text is sent to any external service; the optional Sarvam adapter only runs if you call it and set `SARVAM_API_KEY`.
 
-## Quickstart
+## Run it yourself (clone and go)
+
+Tested with Python 3.13 on Linux. Python 3.10+ should work, but only 3.13 was used for the reference runs. You need about 10 GB of free disk and an internet connection for the first dataset download. A GPU is optional.
+
+The repository does **not** ship trained models or raw datasets. Model files are too large for git, and the datasets come from Reddit, Twitter and YouTube, so they are not redistributed (see [`DATASET.md`](DATASET.md)). After cloning you download the public datasets and train the models yourself, which the steps below do.
+
+### 1. Clone and install
+```bash
+git clone https://github.com/faizdevx/Multilingual-Mental-Health-Risk-.git
+cd Multilingual-Mental-Health-Risk-
+python3 -m venv .venv
+source .venv/bin/activate            # Windows: .venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt      # exact pins used for the experiments: requirements-lock.txt
+```
+`requirements.txt` leaves `torch` unpinned so you get the build that matches your machine (CPU or CUDA). If `pip install torch` picks the wrong build, follow the selector on pytorch.org.
+
+### 2. Check the install (about a minute, no downloads, no GPU)
+```bash
+python -m pytest -q                       # unit tests
+python scripts/train_lstm.py --smoke      # 2-epoch pipeline check on 64 examples
+python scripts/train_transformer.py --smoke
+```
+Smoke runs use tiny subsets and a random encoder. They only prove the pipeline runs; they are not real models.
+
+### 3. Get the data and build the splits
+```bash
+python scripts/download_data.py           # public datasets -> data/raw (git-ignored)
+python scripts/prepare_data.py            # cleaning, dedup, splits -> data/processed
+python scripts/freeze_splits.py --check   # verifies your splits match the published hashes in splits/
+```
+The first download pulls Dreaddit, the UMSAB tweets, the Hinglish YouTube corpus and BRIGHTER from their public sources. If the `--check` step reports a mismatch, your package versions probably differ from `requirements-lock.txt`.
+
+### 4. Train the models
+Pick what fits your hardware. Each step is independent of the others except the app, which loads whichever models exist.
+
+| Model | Command | Time |
+|---|---|---|
+| TF-IDF + LogReg baseline | `python scripts/train_baseline.py` | minutes |
+| Language-ID classifier | `python scripts/train_langid.py` | minutes |
+| Multi-task BiLSTM | `python scripts/train_lstm.py` | about 15 min on 4 CPU cores |
+| Multi-task MuRIL transformer | `python scripts/train_transformer.py` | hours on CPU, much faster on a GPU |
+
+Minimum to see the app work: run the baseline and language-ID steps. The BiLSTM and transformer then appear as extra models. The first transformer run downloads `google/muril-base-cased` from Hugging Face (about 1 GB).
+
+### 5. Start the app
+```bash
+uvicorn src.app.main:app_factory --factory --port 8000
+```
+Open http://127.0.0.1:8000. Models that have not been trained show as "not available" on the Models page, and API calls to them return an error instead of made-up output. Try the API directly:
+```bash
+curl -s localhost:8000/predict -H 'content-type: application/json' \
+  -d '{"text": "I have been so stressed about exams lately", "model": "baseline"}'
+```
+Your text is processed in memory and is never logged (see [Privacy](#privacy)).
+
+### 6. Reproduce the research experiments (optional)
+```bash
+python scripts/run_experiment.py configs/cpu/C_ST_sentiment_hingroberta.json --device cpu   # one config, 3 seeds
+sh scripts/run_cpu_queue.sh                                                                 # the full CPU queue; resumable
+python scripts/write_results_tables.py                                                      # rebuild the result tables from runs/
+python scripts/evaluate.py                                                                  # metrics and calibration -> reports/
+```
+The full queue took days on a 4-core CPU. It saves a snapshot about every 10 minutes and resumes after an interruption, so you can stop and rerun it. Per-run configs, environments, histories and predictions from our runs are already committed under `runs/`, and the numbers in `reports/` can be traced to them. The paper is in `paper/research_paper.pdf`; rebuild it with `python paper/build_paper.py` (needs Playwright with Chromium).
+
+### Common problems
+* **`ModuleNotFoundError: src`**: run commands from the repository root.
+* **Port 8000 busy**: use `--port 8001`.
+* **Out of memory while training the transformer**: lower the batch size, e.g. `python scripts/train_transformer.py --batch-size 8`.
+* **Dataset download fails**: rerun it; it needs access to huggingface.co and cs.columbia.edu. Behind a proxy, set `HTTPS_PROXY`.
+* **Slow on CPU**: expected for MuRIL. Use Google Colab (`requirements-colab.txt`) or any machine with a CUDA GPU; the device is auto-detected.
+
+## Quickstart (command reference)
 
 ```bash
 pip install -r requirements.txt
