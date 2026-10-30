@@ -30,6 +30,7 @@ faith = json.loads((R / "results/faithfulness.json").read_text())["groups"]
 errb = json.loads((R / "results/error_breakdown.json").read_text())
 lid = json.loads((R / "results/tweets_hindi_langid_stratified.json").read_text())
 overlap = json.loads((R / "results/hingcorpus_overlap.json").read_text())
+probe = json.loads((R / "results/edge_case_probe.json").read_text(encoding="utf-8"))
 refs = json.loads((HERE / "refs.json").read_text())
 refs["chancellor"]["authors"] = "S. Chancellor and M. De Choudhury"
 
@@ -214,7 +215,7 @@ def render(prev):
     reg = Reg(prev)
     env = Environment(loader=FileSystemLoader(str(HERE)), autoescape=False)
     env.globals.update(dnum=dnum, m=m, ms=ms, dlt=dlt, ci=ci, dci=dci, sig=sig, covf=covf, fth=fth, f2=f2, orig=orig, boot=boot, errb=errb, lid=lid,
-                       overlap=overlap, cite=reg.cite, tab_def=reg.tab_def, fig_def=reg.fig_def, tref=reg.tref, fref=reg.fref, sel=sel, faith=faith, summary=summary)
+                       overlap=overlap, probe=probe, cite=reg.cite, tab_def=reg.tab_def, fig_def=reg.fig_def, tref=reg.tref, fref=reg.fref, sel=sel, faith=faith, summary=summary)
     html = env.get_template("paper.html.j2").render(refs_html=lambda: "".join(f'<li>{fmt_ref(k)}</li>' for k in reg.cites))
     return html, reg
 
@@ -233,7 +234,11 @@ if __name__ == "__main__":
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
-        b = p.chromium.launch(executable_path="/opt/pw-browsers/chromium-1194/chrome-linux/chrome", args=["--no-sandbox"])
+        linux_chrome = Path("/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
+        if linux_chrome.exists():
+            b = p.chromium.launch(executable_path=str(linux_chrome), args=["--no-sandbox"])
+        else:  # e.g. Windows: use the installed Edge, no browser download needed
+            b = p.chromium.launch(channel="msedge")
         pg = b.new_page()
         pg.goto((HERE / "research_paper.html").as_uri())
         pg.wait_for_timeout(500)
