@@ -1,0 +1,2303 @@
+{
+ "n_cases": 50,
+ "n_scored": 42,
+ "categories": {
+  "sarcasm": "Sarcasm and fake positivity",
+  "hidden": "Hidden sadness, no emotion words",
+  "contradiction": "Contradictory emotions",
+  "hinglish": "Hinglish code-switching",
+  "negwords": "Negative words, positive emotion",
+  "neutral": "Neutral statements",
+  "ambiguity": "Ambiguity and context",
+  "slang": "Short text and slang",
+  "adversarial": "Adversarial phrasing"
+ },
+ "models": {
+  "baseline": {
+   "checkpoint": {
+    "best_epoch": null,
+    "best_val_mean_macro_f1": null,
+    "epochs_planned": null,
+    "device": null
+   },
+   "by_category": {
+    "sarcasm": {
+     "scored": 5,
+     "passed": 0,
+     "n": 5
+    },
+    "hidden": {
+     "scored": 5,
+     "passed": 3,
+     "n": 5
+    },
+    "contradiction": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "hinglish": {
+     "scored": 5,
+     "passed": 0,
+     "n": 5
+    },
+    "negwords": {
+     "scored": 5,
+     "passed": 3,
+     "n": 5
+    },
+    "neutral": {
+     "scored": 3,
+     "passed": 0,
+     "n": 5
+    },
+    "ambiguity": {
+     "scored": 2,
+     "passed": 0,
+     "n": 5
+    },
+    "slang": {
+     "scored": 4,
+     "passed": 3,
+     "n": 7
+    },
+    "adversarial": {
+     "scored": 8,
+     "passed": 6,
+     "n": 8
+    }
+   },
+   "scored": 42,
+   "passed": 17,
+   "n_stress": 8,
+   "n_two_plus_emotions": 21,
+   "n_no_emotion": 10,
+   "neutral_flagged_stress": 1,
+   "emotion_counts": {
+    "fear": 28,
+    "joy": 11,
+    "sadness": 18,
+    "surprise": 12,
+    "anger": 2
+   },
+   "sentiment_counts": {
+    "positive": 12,
+    "neutral": 8,
+    "negative": 30
+   },
+   "cases": [
+    {
+     "id": "E01",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "joy",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0769,
+     "check": false
+    },
+    {
+     "id": "E02",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "joy",
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0601,
+     "check": false
+    },
+    {
+     "id": "E03",
+     "category": "sarcasm",
+     "expected": "Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0664,
+     "check": false
+    },
+    {
+     "id": "E04",
+     "category": "sarcasm",
+     "expected": "Envy / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2474,
+     "check": false
+    },
+    {
+     "id": "E05",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0462,
+     "check": false
+    },
+    {
+     "id": "E06",
+     "category": "hidden",
+     "expected": "Loneliness",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3638,
+     "check": false
+    },
+    {
+     "id": "E07",
+     "category": "hidden",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0519,
+     "check": true
+    },
+    {
+     "id": "E08",
+     "category": "hidden",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8354,
+     "check": true
+    },
+    {
+     "id": "E09",
+     "category": "hidden",
+     "expected": "Loneliness / Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4621,
+     "check": true
+    },
+    {
+     "id": "E10",
+     "category": "hidden",
+     "expected": "Nostalgia / Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.159,
+     "check": false
+    },
+    {
+     "id": "E11",
+     "category": "contradiction",
+     "expected": "Happiness + Envy",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1534,
+     "check": false
+    },
+    {
+     "id": "E12",
+     "category": "contradiction",
+     "expected": "Happiness + Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "joy",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.27,
+     "check": true
+    },
+    {
+     "id": "E13",
+     "category": "contradiction",
+     "expected": "Happiness + Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0525,
+     "check": false
+    },
+    {
+     "id": "E14",
+     "category": "contradiction",
+     "expected": "Nostalgia + Regret",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1772,
+     "check": true
+    },
+    {
+     "id": "E15",
+     "category": "contradiction",
+     "expected": "Anger + Attachment",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3324,
+     "check": false
+    },
+    {
+     "id": "E16",
+     "category": "hinglish",
+     "expected": "Hidden sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1416,
+     "check": false
+    },
+    {
+     "id": "E17",
+     "category": "hinglish",
+     "expected": "Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0764,
+     "check": false
+    },
+    {
+     "id": "E18",
+     "category": "hinglish",
+     "expected": "Possible denial / Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0544,
+     "check": false
+    },
+    {
+     "id": "E19",
+     "category": "hinglish",
+     "expected": "Disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0372,
+     "check": false
+    },
+    {
+     "id": "E20",
+     "category": "hinglish",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0922,
+     "check": false
+    },
+    {
+     "id": "E21",
+     "category": "negwords",
+     "expected": "Mixed / Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4688,
+     "check": true
+    },
+    {
+     "id": "E22",
+     "category": "negwords",
+     "expected": "Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2703,
+     "check": false
+    },
+    {
+     "id": "E23",
+     "category": "negwords",
+     "expected": "Awe / Appreciation",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0841,
+     "check": true
+    },
+    {
+     "id": "E24",
+     "category": "negwords",
+     "expected": "Love + Fear",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7599,
+     "check": false
+    },
+    {
+     "id": "E25",
+     "category": "negwords",
+     "expected": "Mixed / Gratitude",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2051,
+     "check": true
+    },
+    {
+     "id": "E26",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0168,
+     "check": false
+    },
+    {
+     "id": "E27",
+     "category": "neutral",
+     "expected": "Neutral / Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2164,
+     "check": null
+    },
+    {
+     "id": "E28",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.5014,
+     "check": false
+    },
+    {
+     "id": "E29",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0638,
+     "check": false
+    },
+    {
+     "id": "E30",
+     "category": "neutral",
+     "expected": "Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3343,
+     "check": null
+    },
+    {
+     "id": "E31",
+     "category": "ambiguity",
+     "expected": "Context-dependent",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0516,
+     "check": null
+    },
+    {
+     "id": "E32",
+     "category": "ambiguity",
+     "expected": "Acceptance / Resignation",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1655,
+     "check": false
+    },
+    {
+     "id": "E33",
+     "category": "ambiguity",
+     "expected": "Resignation / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.4586,
+     "check": false
+    },
+    {
+     "id": "E34",
+     "category": "ambiguity",
+     "expected": "Acceptance / Hidden disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0422,
+     "check": null
+    },
+    {
+     "id": "E35",
+     "category": "ambiguity",
+     "expected": "Ambiguous / Possible suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9528,
+     "check": null
+    },
+    {
+     "id": "E36",
+     "category": "slang",
+     "expected": "Frustration / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0684,
+     "check": true
+    },
+    {
+     "id": "E37",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0439,
+     "check": null
+    },
+    {
+     "id": "E38",
+     "category": "slang",
+     "expected": "Surprise / Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0969,
+     "check": false
+    },
+    {
+     "id": "E39",
+     "category": "slang",
+     "expected": "Low motivation",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0602,
+     "check": true
+    },
+    {
+     "id": "E40",
+     "category": "slang",
+     "expected": "Context-dependent",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0269,
+     "check": null
+    },
+    {
+     "id": "E41",
+     "category": "slang",
+     "expected": "Distress / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.342,
+     "check": true
+    },
+    {
+     "id": "E42",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0651,
+     "check": null
+    },
+    {
+     "id": "E43",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7149,
+     "check": true
+    },
+    {
+     "id": "E44",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9145,
+     "check": false
+    },
+    {
+     "id": "E45",
+     "category": "adversarial",
+     "expected": "Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear",
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1937,
+     "check": true
+    },
+    {
+     "id": "E46",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "sadness"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.242,
+     "check": false
+    },
+    {
+     "id": "E47",
+     "category": "adversarial",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "joy",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7665,
+     "check": true
+    },
+    {
+     "id": "E48",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.0409,
+     "check": true
+    },
+    {
+     "id": "E49",
+     "category": "adversarial",
+     "expected": "Ambiguous sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9055,
+     "check": true
+    },
+    {
+     "id": "E50",
+     "category": "adversarial",
+     "expected": "Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3911,
+     "check": true
+    }
+   ]
+  },
+  "bilstm": {
+   "checkpoint": {
+    "best_epoch": 4,
+    "best_val_mean_macro_f1": 0.5907070000815783,
+    "epochs_planned": 12,
+    "device": "cuda"
+   },
+   "by_category": {
+    "sarcasm": {
+     "scored": 5,
+     "passed": 0,
+     "n": 5
+    },
+    "hidden": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "contradiction": {
+     "scored": 5,
+     "passed": 1,
+     "n": 5
+    },
+    "hinglish": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "negwords": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "neutral": {
+     "scored": 3,
+     "passed": 0,
+     "n": 5
+    },
+    "ambiguity": {
+     "scored": 2,
+     "passed": 1,
+     "n": 5
+    },
+    "slang": {
+     "scored": 4,
+     "passed": 3,
+     "n": 7
+    },
+    "adversarial": {
+     "scored": 8,
+     "passed": 6,
+     "n": 8
+    }
+   },
+   "scored": 42,
+   "passed": 17,
+   "n_stress": 24,
+   "n_two_plus_emotions": 37,
+   "n_no_emotion": 1,
+   "neutral_flagged_stress": 2,
+   "emotion_counts": {
+    "joy": 16,
+    "surprise": 29,
+    "fear": 27,
+    "sadness": 20,
+    "anger": 4,
+    "disgust": 1
+   },
+   "sentiment_counts": {
+    "positive": 15,
+    "negative": 22,
+    "neutral": 13
+   },
+   "cases": [
+    {
+     "id": "E01",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0061,
+     "check": false
+    },
+    {
+     "id": "E02",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1677,
+     "check": false
+    },
+    {
+     "id": "E03",
+     "category": "sarcasm",
+     "expected": "Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2626,
+     "check": false
+    },
+    {
+     "id": "E04",
+     "category": "sarcasm",
+     "expected": "Envy / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0966,
+     "check": false
+    },
+    {
+     "id": "E05",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0136,
+     "check": false
+    },
+    {
+     "id": "E06",
+     "category": "hidden",
+     "expected": "Loneliness",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.5293,
+     "check": false
+    },
+    {
+     "id": "E07",
+     "category": "hidden",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1729,
+     "check": false
+    },
+    {
+     "id": "E08",
+     "category": "hidden",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.876,
+     "check": true
+    },
+    {
+     "id": "E09",
+     "category": "hidden",
+     "expected": "Loneliness / Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2011,
+     "check": false
+    },
+    {
+     "id": "E10",
+     "category": "hidden",
+     "expected": "Nostalgia / Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9429,
+     "check": true
+    },
+    {
+     "id": "E11",
+     "category": "contradiction",
+     "expected": "Happiness + Envy",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2382,
+     "check": false
+    },
+    {
+     "id": "E12",
+     "category": "contradiction",
+     "expected": "Happiness + Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0799,
+     "check": false
+    },
+    {
+     "id": "E13",
+     "category": "contradiction",
+     "expected": "Happiness + Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1161,
+     "check": false
+    },
+    {
+     "id": "E14",
+     "category": "contradiction",
+     "expected": "Nostalgia + Regret",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8223,
+     "check": true
+    },
+    {
+     "id": "E15",
+     "category": "contradiction",
+     "expected": "Anger + Attachment",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.6124,
+     "check": false
+    },
+    {
+     "id": "E16",
+     "category": "hinglish",
+     "expected": "Hidden sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7304,
+     "check": true
+    },
+    {
+     "id": "E17",
+     "category": "hinglish",
+     "expected": "Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2306,
+     "check": false
+    },
+    {
+     "id": "E18",
+     "category": "hinglish",
+     "expected": "Possible denial / Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9098,
+     "check": true
+    },
+    {
+     "id": "E19",
+     "category": "hinglish",
+     "expected": "Disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4466,
+     "check": false
+    },
+    {
+     "id": "E20",
+     "category": "hinglish",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0125,
+     "check": false
+    },
+    {
+     "id": "E21",
+     "category": "negwords",
+     "expected": "Mixed / Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9004,
+     "check": false
+    },
+    {
+     "id": "E22",
+     "category": "negwords",
+     "expected": "Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.6819,
+     "check": true
+    },
+    {
+     "id": "E23",
+     "category": "negwords",
+     "expected": "Awe / Appreciation",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2074,
+     "check": true
+    },
+    {
+     "id": "E24",
+     "category": "negwords",
+     "expected": "Love + Fear",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9438,
+     "check": false
+    },
+    {
+     "id": "E25",
+     "category": "negwords",
+     "expected": "Mixed / Gratitude",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.5711,
+     "check": false
+    },
+    {
+     "id": "E26",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1155,
+     "check": false
+    },
+    {
+     "id": "E27",
+     "category": "neutral",
+     "expected": "Neutral / Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.3171,
+     "check": null
+    },
+    {
+     "id": "E28",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8999,
+     "check": false
+    },
+    {
+     "id": "E29",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.5293,
+     "check": false
+    },
+    {
+     "id": "E30",
+     "category": "neutral",
+     "expected": "Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7053,
+     "check": null
+    },
+    {
+     "id": "E31",
+     "category": "ambiguity",
+     "expected": "Context-dependent",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0987,
+     "check": null
+    },
+    {
+     "id": "E32",
+     "category": "ambiguity",
+     "expected": "Acceptance / Resignation",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8619,
+     "check": true
+    },
+    {
+     "id": "E33",
+     "category": "ambiguity",
+     "expected": "Resignation / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3991,
+     "check": false
+    },
+    {
+     "id": "E34",
+     "category": "ambiguity",
+     "expected": "Acceptance / Hidden disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4098,
+     "check": null
+    },
+    {
+     "id": "E35",
+     "category": "ambiguity",
+     "expected": "Ambiguous / Possible suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8739,
+     "check": null
+    },
+    {
+     "id": "E36",
+     "category": "slang",
+     "expected": "Frustration / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4836,
+     "check": true
+    },
+    {
+     "id": "E37",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7821,
+     "check": null
+    },
+    {
+     "id": "E38",
+     "category": "slang",
+     "expected": "Surprise / Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "disgust",
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3276,
+     "check": true
+    },
+    {
+     "id": "E39",
+     "category": "slang",
+     "expected": "Low motivation",
+     "language_tag": "hi-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0354,
+     "check": false
+    },
+    {
+     "id": "E40",
+     "category": "slang",
+     "expected": "Context-dependent",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0173,
+     "check": null
+    },
+    {
+     "id": "E41",
+     "category": "slang",
+     "expected": "Distress / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9578,
+     "check": true
+    },
+    {
+     "id": "E42",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2965,
+     "check": null
+    },
+    {
+     "id": "E43",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9844,
+     "check": true
+    },
+    {
+     "id": "E44",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9368,
+     "check": true
+    },
+    {
+     "id": "E45",
+     "category": "adversarial",
+     "expected": "Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.6796,
+     "check": true
+    },
+    {
+     "id": "E46",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0614,
+     "check": false
+    },
+    {
+     "id": "E47",
+     "category": "adversarial",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9499,
+     "check": true
+    },
+    {
+     "id": "E48",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2662,
+     "check": false
+    },
+    {
+     "id": "E49",
+     "category": "adversarial",
+     "expected": "Ambiguous sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9871,
+     "check": true
+    },
+    {
+     "id": "E50",
+     "category": "adversarial",
+     "expected": "Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9839,
+     "check": true
+    }
+   ]
+  },
+  "transformer": {
+   "checkpoint": {
+    "best_epoch": 1,
+    "best_val_mean_macro_f1": 0.6006168467696024,
+    "epochs_planned": 3,
+    "device": "cuda"
+   },
+   "by_category": {
+    "sarcasm": {
+     "scored": 5,
+     "passed": 1,
+     "n": 5
+    },
+    "hidden": {
+     "scored": 5,
+     "passed": 4,
+     "n": 5
+    },
+    "contradiction": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "hinglish": {
+     "scored": 5,
+     "passed": 5,
+     "n": 5
+    },
+    "negwords": {
+     "scored": 5,
+     "passed": 2,
+     "n": 5
+    },
+    "neutral": {
+     "scored": 3,
+     "passed": 0,
+     "n": 5
+    },
+    "ambiguity": {
+     "scored": 2,
+     "passed": 0,
+     "n": 5
+    },
+    "slang": {
+     "scored": 4,
+     "passed": 2,
+     "n": 7
+    },
+    "adversarial": {
+     "scored": 8,
+     "passed": 7,
+     "n": 8
+    }
+   },
+   "scored": 42,
+   "passed": 23,
+   "n_stress": 30,
+   "n_two_plus_emotions": 34,
+   "n_no_emotion": 6,
+   "neutral_flagged_stress": 1,
+   "emotion_counts": {
+    "joy": 12,
+    "surprise": 11,
+    "anger": 11,
+    "disgust": 19,
+    "fear": 30,
+    "sadness": 25
+   },
+   "sentiment_counts": {
+    "positive": 13,
+    "negative": 31,
+    "neutral": 6
+   },
+   "cases": [
+    {
+     "id": "E01",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.037,
+     "check": false
+    },
+    {
+     "id": "E02",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0571,
+     "check": false
+    },
+    {
+     "id": "E03",
+     "category": "sarcasm",
+     "expected": "Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9072,
+     "check": true
+    },
+    {
+     "id": "E04",
+     "category": "sarcasm",
+     "expected": "Envy / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0714,
+     "check": false
+    },
+    {
+     "id": "E05",
+     "category": "sarcasm",
+     "expected": "Sadness / Sarcasm",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0986,
+     "check": false
+    },
+    {
+     "id": "E06",
+     "category": "hidden",
+     "expected": "Loneliness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8426,
+     "check": true
+    },
+    {
+     "id": "E07",
+     "category": "hidden",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "stress",
+     "risk_probability": 0.6003,
+     "check": true
+    },
+    {
+     "id": "E08",
+     "category": "hidden",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7823,
+     "check": true
+    },
+    {
+     "id": "E09",
+     "category": "hidden",
+     "expected": "Loneliness / Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.1272,
+     "check": false
+    },
+    {
+     "id": "E10",
+     "category": "hidden",
+     "expected": "Nostalgia / Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8572,
+     "check": true
+    },
+    {
+     "id": "E11",
+     "category": "contradiction",
+     "expected": "Happiness + Envy",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0609,
+     "check": false
+    },
+    {
+     "id": "E12",
+     "category": "contradiction",
+     "expected": "Happiness + Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8622,
+     "check": false
+    },
+    {
+     "id": "E13",
+     "category": "contradiction",
+     "expected": "Happiness + Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8305,
+     "check": false
+    },
+    {
+     "id": "E14",
+     "category": "contradiction",
+     "expected": "Nostalgia + Regret",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.817,
+     "check": true
+    },
+    {
+     "id": "E15",
+     "category": "contradiction",
+     "expected": "Anger + Attachment",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9039,
+     "check": true
+    },
+    {
+     "id": "E16",
+     "category": "hinglish",
+     "expected": "Hidden sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8448,
+     "check": true
+    },
+    {
+     "id": "E17",
+     "category": "hinglish",
+     "expected": "Sadness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8783,
+     "check": true
+    },
+    {
+     "id": "E18",
+     "category": "hinglish",
+     "expected": "Possible denial / Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8631,
+     "check": true
+    },
+    {
+     "id": "E19",
+     "category": "hinglish",
+     "expected": "Disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8689,
+     "check": true
+    },
+    {
+     "id": "E20",
+     "category": "hinglish",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [],
+     "risk": "stress",
+     "risk_probability": 0.7425,
+     "check": true
+    },
+    {
+     "id": "E21",
+     "category": "negwords",
+     "expected": "Mixed / Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.4844,
+     "check": false
+    },
+    {
+     "id": "E22",
+     "category": "negwords",
+     "expected": "Happiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8802,
+     "check": false
+    },
+    {
+     "id": "E23",
+     "category": "negwords",
+     "expected": "Awe / Appreciation",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.048,
+     "check": true
+    },
+    {
+     "id": "E24",
+     "category": "negwords",
+     "expected": "Love + Fear",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8054,
+     "check": false
+    },
+    {
+     "id": "E25",
+     "category": "negwords",
+     "expected": "Mixed / Gratitude",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0429,
+     "check": true
+    },
+    {
+     "id": "E26",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.2351,
+     "check": false
+    },
+    {
+     "id": "E27",
+     "category": "neutral",
+     "expected": "Neutral / Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.6354,
+     "check": null
+    },
+    {
+     "id": "E28",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8023,
+     "check": false
+    },
+    {
+     "id": "E29",
+     "category": "neutral",
+     "expected": "Neutral",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.3238,
+     "check": false
+    },
+    {
+     "id": "E30",
+     "category": "neutral",
+     "expected": "Ambiguous",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness",
+      "surprise"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.6744,
+     "check": null
+    },
+    {
+     "id": "E31",
+     "category": "ambiguity",
+     "expected": "Context-dependent",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0591,
+     "check": null
+    },
+    {
+     "id": "E32",
+     "category": "ambiguity",
+     "expected": "Acceptance / Resignation",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2831,
+     "check": false
+    },
+    {
+     "id": "E33",
+     "category": "ambiguity",
+     "expected": "Resignation / Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4793,
+     "check": false
+    },
+    {
+     "id": "E34",
+     "category": "ambiguity",
+     "expected": "Acceptance / Hidden disappointment",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7703,
+     "check": null
+    },
+    {
+     "id": "E35",
+     "category": "ambiguity",
+     "expected": "Ambiguous / Possible suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.4227,
+     "check": null
+    },
+    {
+     "id": "E36",
+     "category": "slang",
+     "expected": "Frustration / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "neutral",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.2945,
+     "check": false
+    },
+    {
+     "id": "E37",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.5865,
+     "check": null
+    },
+    {
+     "id": "E38",
+     "category": "slang",
+     "expected": "Surprise / Frustration",
+     "language_tag": "hi-Latn",
+     "sentiment": "neutral",
+     "emotions": [
+      "fear",
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2894,
+     "check": true
+    },
+    {
+     "id": "E39",
+     "category": "slang",
+     "expected": "Low motivation",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7781,
+     "check": false
+    },
+    {
+     "id": "E40",
+     "category": "slang",
+     "expected": "Context-dependent",
+     "language_tag": "hi-Latn",
+     "sentiment": "positive",
+     "emotions": [],
+     "risk": "non_stress",
+     "risk_probability": 0.2653,
+     "check": null
+    },
+    {
+     "id": "E41",
+     "category": "slang",
+     "expected": "Distress / Humour",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8766,
+     "check": true
+    },
+    {
+     "id": "E42",
+     "category": "slang",
+     "expected": "Ambiguous",
+     "language_tag": "hi-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.2181,
+     "check": null
+    },
+    {
+     "id": "E43",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7732,
+     "check": true
+    },
+    {
+     "id": "E44",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9197,
+     "check": true
+    },
+    {
+     "id": "E45",
+     "category": "adversarial",
+     "expected": "Disappointment",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7157,
+     "check": true
+    },
+    {
+     "id": "E46",
+     "category": "adversarial",
+     "expected": "Sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "positive",
+     "emotions": [
+      "joy",
+      "surprise"
+     ],
+     "risk": "non_stress",
+     "risk_probability": 0.0799,
+     "check": false
+    },
+    {
+     "id": "E47",
+     "category": "adversarial",
+     "expected": "Suppressed sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.7023,
+     "check": true
+    },
+    {
+     "id": "E48",
+     "category": "adversarial",
+     "expected": "Emotional numbness",
+     "language_tag": "hi-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "anger",
+      "disgust",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8745,
+     "check": true
+    },
+    {
+     "id": "E49",
+     "category": "adversarial",
+     "expected": "Ambiguous sadness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.9034,
+     "check": true
+    },
+    {
+     "id": "E50",
+     "category": "adversarial",
+     "expected": "Emptiness",
+     "language_tag": "en-Latn",
+     "sentiment": "negative",
+     "emotions": [
+      "disgust",
+      "fear",
+      "sadness"
+     ],
+     "risk": "stress",
+     "risk_probability": 0.8673,
+     "check": true
+    }
+   ]
+  }
+ }
+}
