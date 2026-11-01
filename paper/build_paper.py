@@ -86,6 +86,8 @@ ACL_TITLES = {
 EXTRA = {  # references that are not in refs.json
     "pedregosa": 'F. Pedregosa <i>et al.</i>, "Scikit-learn: Machine learning in Python," <i>J. Mach. Learn. Res.</i>, vol. 12, pp. 2825-2830, 2011.',
     "ytdata": 'shae2977, "Hinglish YouTube comments sentiment dataset," Hugging Face Datasets, revision 84abda5, accessed Oct. 7, 2026. [Online]. Available: https://huggingface.co/datasets/shae2977/hinglish-youtube-sentiments-dataset',
+    "indicbert2": 'S. Doddapaneni, R. Aralikatte, G. Ramesh, S. Goyal, M. M. Khapra, A. Kunchukuttan, and P. Kumar, "Towards leaving no Indic language behind: Building monolingual corpora, benchmark and models for Indic languages," in Proc. 61st Annu. Meeting Assoc. Comput. Linguistics (ACL), 2023, pp. 12402-12426.',
+    "indidataminer": 'S. Kumar, S. Kumar, S. R. Singh, and S. Nandi, "indiDataMiner at SemEval-2025 Task 11: From text to emotion: Transformer-based models for emotions detection in Indian languages," in Proc. 19th Int. Workshop Semantic Eval. (SemEval), 2025, pp. 2020-2027.',
     "umsab": 'cardiffnlp, "Tweet sentiment multilingual (UMSAB)," Hugging Face Datasets, revision 14b13ed, accessed Oct. 7, 2026. [Online]. Available: https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual',
 }
 

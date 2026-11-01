@@ -1,0 +1,57 @@
+{
+  "name": "E4_1_indicbertv2_single_emotion",
+  "plan_id": "E4.1",
+  "description": "Single-task IndicBERT v2 (ai4bharat/IndicBERTv2-MLM-only) emotion, the encoder used by the indiDataMiner system at SemEval-2025 Task 11 (Hindi). Added after review to compare against a 2025 system on our splits; same protocol and hyperparameters as C_ST_emotion_muril. Pre-registered test.",
+  "model_name": "ai4bharat/IndicBERTv2-MLM-only",
+  "tasks": [
+    "emotion"
+  ],
+  "seeds": [
+    13,
+    21,
+    42
+  ],
+  "evaluate_test": true,
+  "save_checkpoint": false,
+  "train": {
+    "epochs": 3,
+    "batch_size": 16,
+    "encoder_lr": 3e-05,
+    "head_lr": 0.0005,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "patience": 2,
+    "amp": false
+  },
+  "seed": 13,
+  "limit": null,
+  "resolved_train_config": {
+    "kind": "transformer",
+    "epochs": 3,
+    "batch_size": 16,
+    "lr": 0.002,
+    "encoder_lr": 3e-05,
+    "head_lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "grad_clip": 1.0,
+    "patience": 2,
+    "seed": 13,
+    "loss_weights": {
+      "emotion": 1.0
+    },
+    "max_len": {
+      "sentiment": 64,
+      "emotion": 64,
+      "risk": 128
+    },
+    "device": "cuda",
+    "smoke": false,
+    "truncation": {},
+    "head_tokens": 64,
+    "amp": false,
+    "deterministic": false,
+    "save_checkpoint": false,
+    "resume_every_s": 600
+  }
+}

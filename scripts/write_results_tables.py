@@ -4,6 +4,7 @@ Runs the pre-registered comparisons with the paired bootstrap (src/experiments/a
   M1   C_ST_risk_head128 vs C_ST_risk_headtail256 (and head256 if present)       VALIDATION (selection only)
   M2   C_ST_sentiment_muril vs C_ST_sentiment_hingroberta                        VALIDATION + TEST
   ABL  C_MT_muril vs C_ST_{sentiment,emotion,risk}_muril                         TEST (pre-registered)
+  E4.1 C_ST_emotion_muril vs E4_1_indicbertv2_single_emotion (SemEval-2025 encoder) TEST (pre-registered)
 """
 import json
 import sys
@@ -28,7 +29,8 @@ COMPARISONS = [
     for t, ms in (("sentiment", ("macro_f1",)), ("emotion", ("macro_f1",)), ("risk", ("macro_f1", "pr_auc", "f1")))
     for m in ms
 ] + [("ABL", "C_ST_sentiment_muril", "C_MT_muril", "test", "sentiment", "macro_f1", s) for s in ("language:hi-Latn", "language:en-Latn")
-] + [("ABL", "C_ST_emotion_muril", "C_MT_muril", "test", "emotion", "macro_f1", s) for s in ("language:en-Latn", "language:hi-Deva")]
+] + [("ABL", "C_ST_emotion_muril", "C_MT_muril", "test", "emotion", "macro_f1", s) for s in ("language:en-Latn", "language:hi-Deva")
+] + [("E4.1", "C_ST_emotion_muril", "E4_1_indicbertv2_single_emotion", "test", "emotion", "macro_f1", s) for s in (None, "language:en-Latn", "language:hi-Deva")]
 
 
 def fmt(x, d=3):

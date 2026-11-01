@@ -82,6 +82,12 @@
 | C_ST_sentiment_muril | val | sentiment | brier | 0.556 | 0.006 | 3 |
 | C_ST_sentiment_muril | val | sentiment | ece | 0.028 | 0.003 | 3 |
 | C_ST_sentiment_muril | val | sentiment | macro_f1 | 0.568 | 0.002 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | brier | 0.099 | 0.001 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | ece | 0.011 | 0.003 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | macro_f1 | 0.744 | 0.003 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | brier | 0.080 | 0.001 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | ece | 0.011 | 0.001 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | macro_f1 | 0.770 | 0.002 | 3 |
 
 ## Per-language / per-source macro-F1 (test where available)
 
@@ -145,6 +151,14 @@
 | C_ST_sentiment_muril | val | sentiment | source:tweets-english | 0.679 | 0.016 | 3 |
 | C_ST_sentiment_muril | val | sentiment | source:tweets-hindi | 0.351 | 0.001 | 3 |
 | C_ST_sentiment_muril | val | sentiment | source:youtube-hinglish | 0.633 | 0.014 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | language:en-Latn | 0.676 | 0.004 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | language:hi-Deva | 0.878 | 0.002 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | source:brighter-eng | 0.676 | 0.004 | 3 |
+| E4_1_indicbertv2_single_emotion | test | emotion | source:brighter-hin | 0.878 | 0.002 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | language:en-Latn | 0.698 | 0.006 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | language:hi-Deva | 0.856 | 0.002 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | source:brighter-eng | 0.698 | 0.006 | 3 |
+| E4_1_indicbertv2_single_emotion | val | emotion | source:brighter-hin | 0.856 | 0.002 | 3 |
 
 ## Paired bootstrap comparisons (B - A; 1,000 resamples of examples; seed-averaged metric)
 
@@ -177,3 +191,6 @@
 | ABL | test | sentiment | macro_f1 | language:en-Latn | C_ST_sentiment_muril | C_MT_muril | 0.684 | 0.673 | -0.011 | [-0.028, +0.009] | no |
 | ABL | test | emotion | macro_f1 | language:en-Latn | C_ST_emotion_muril | C_MT_muril | 0.639 | 0.645 | +0.006 | [-0.002, +0.012] | no |
 | ABL | test | emotion | macro_f1 | language:hi-Deva | C_ST_emotion_muril | C_MT_muril | 0.770 | 0.768 | -0.002 | [-0.012, +0.009] | no |
+| E4.1 | test | emotion | macro_f1 | all | C_ST_emotion_muril | E4_1_indicbertv2_single_emotion | 0.682 | 0.744 | +0.063 | [+0.051, +0.074] | yes |
+| E4.1 | test | emotion | macro_f1 | language:en-Latn | C_ST_emotion_muril | E4_1_indicbertv2_single_emotion | 0.639 | 0.676 | +0.037 | [+0.027, +0.047] | yes |
+| E4.1 | test | emotion | macro_f1 | language:hi-Deva | C_ST_emotion_muril | E4_1_indicbertv2_single_emotion | 0.770 | 0.878 | +0.108 | [+0.091, +0.126] | yes |
