@@ -928,5 +928,458 @@
     "n_valid_resamples": 1000,
     "id": "E4.1",
     "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "all",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 2213,
+    "mean_a": 0.5576358827368407,
+    "mean_b": 0.6474531841377446,
+    "diff_b_minus_a": 0.08981730140090383,
+    "ci95": [
+      0.0710656564882175,
+      0.10826459341827924
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.2",
+    "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:hi-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 1343,
+    "mean_a": 0.5038574997072811,
+    "mean_b": 0.6114236940040572,
+    "diff_b_minus_a": 0.10756619429677605,
+    "ci95": [
+      0.08203625120907544,
+      0.13147176229564783
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.2",
+    "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:en-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 870,
+    "mean_a": 0.6416404148745269,
+    "mean_b": 0.7040743346973647,
+    "diff_b_minus_a": 0.06243391982283775,
+    "ci95": [
+      0.038680940233788055,
+      0.08711453483919705
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.2",
+    "status": "ok"
+  },
+  {
+    "a": "E4_3_mbert_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "all",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 2213,
+    "mean_a": 0.537415691687022,
+    "mean_b": 0.6474531841377446,
+    "diff_b_minus_a": 0.11003749245072258,
+    "ci95": [
+      0.091195633053069,
+      0.12818713550780642
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "E4_3_mbert_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:hi-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 1343,
+    "mean_a": 0.48634288701484046,
+    "mean_b": 0.6114236940040572,
+    "diff_b_minus_a": 0.1250808069892167,
+    "ci95": [
+      0.09947829042707405,
+      0.1499949000793768
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "E4_3_mbert_sentiment",
+    "b": "C_ST_sentiment_hingroberta",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:en-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 870,
+    "mean_a": 0.6179097551281685,
+    "mean_b": 0.7040743346973647,
+    "diff_b_minus_a": 0.08616457956919621,
+    "ci95": [
+      0.05779237493149206,
+      0.11091314660673224
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "E4_3_mbert_sentiment",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "all",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 2213,
+    "mean_a": 0.5576358827368407,
+    "mean_b": 0.537415691687022,
+    "diff_b_minus_a": -0.02022019104981876,
+    "ci95": [
+      -0.031011742191679206,
+      -0.009408239559523381
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "E4_3_mbert_sentiment",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:hi-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 1343,
+    "mean_a": 0.5038574997072811,
+    "mean_b": 0.48634288701484046,
+    "diff_b_minus_a": -0.017514612692440645,
+    "ci95": [
+      -0.03367907978674941,
+      -0.002081476766175818
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "E4_2_mbert_garg2026_sentiment",
+    "b": "E4_3_mbert_sentiment",
+    "split": "test",
+    "task": "sentiment",
+    "scope": "language:en-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13,
+      21,
+      42
+    ],
+    "n_examples": 870,
+    "mean_a": 0.6416404148745269,
+    "mean_b": 0.6179097551281685,
+    "diff_b_minus_a": -0.023730659746358462,
+    "ci95": [
+      -0.0417218857199627,
+      -0.007507397457859066
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.3",
+    "status": "ok"
+  },
+  {
+    "a": "C_ST_emotion_muril",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "all",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 3769,
+    "mean_a": 0.6817778775290027,
+    "mean_b": 0.7721872629409416,
+    "diff_b_minus_a": 0.09040938541193899,
+    "ci95": [
+      0.0778011174581394,
+      0.1037065155861692
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
+  },
+  {
+    "a": "C_ST_emotion_muril",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "language:en-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 2759,
+    "mean_a": 0.6391626550919325,
+    "mean_b": 0.719641021935179,
+    "diff_b_minus_a": 0.0804783668432465,
+    "ci95": [
+      0.06878676152041438,
+      0.0926481519725715
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
+  },
+  {
+    "a": "C_ST_emotion_muril",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "language:hi-Deva",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 1010,
+    "mean_a": 0.7700065921594287,
+    "mean_b": 0.884453873138619,
+    "diff_b_minus_a": 0.11444728097919032,
+    "ci95": [
+      0.09683944920422792,
+      0.13258127474371353
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
+  },
+  {
+    "a": "E4_1_indicbertv2_single_emotion",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "all",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 3769,
+    "mean_a": 0.7444357732202861,
+    "mean_b": 0.7721872629409416,
+    "diff_b_minus_a": 0.027751489720655553,
+    "ci95": [
+      0.01820754751705552,
+      0.037417630810189874
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
+  },
+  {
+    "a": "E4_1_indicbertv2_single_emotion",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "language:en-Latn",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 2759,
+    "mean_a": 0.675717530238417,
+    "mean_b": 0.719641021935179,
+    "diff_b_minus_a": 0.04392349169676202,
+    "ci95": [
+      0.03229814650993284,
+      0.055807121217220056
+    ],
+    "ci_excludes_zero": true,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
+  },
+  {
+    "a": "E4_1_indicbertv2_single_emotion",
+    "b": "E4_4_xlmr_large_emotion",
+    "split": "test",
+    "task": "emotion",
+    "scope": "language:hi-Deva",
+    "metric": "macro_f1",
+    "seeds_a": [
+      13,
+      21,
+      42
+    ],
+    "seeds_b": [
+      13
+    ],
+    "n_examples": 1010,
+    "mean_a": 0.8779659578290019,
+    "mean_b": 0.884453873138619,
+    "diff_b_minus_a": 0.0064879153096171205,
+    "ci95": [
+      -0.007113243451888273,
+      0.0198665894613972
+    ],
+    "ci_excludes_zero": false,
+    "n_resamples": 1000,
+    "n_valid_resamples": 1000,
+    "id": "E4.4",
+    "status": "ok"
   }
 ]

@@ -1,0 +1,63 @@
+{
+  "name": "E4_2_mbert_garg2026_sentiment",
+  "plan_id": "E4.2",
+  "description": "Reproduction of the Hinglish sentiment recipe of Garg et al. (arXiv:2601.05091, Jan 2026; NLPIR 2025): bert-base-multilingual-cased, [CLS] + dropout + linear head, AdamW lr 2e-5, batch 8, 3 epochs, weight decay 0.01, 500 warmup steps (= 0.228 of 2,196 steps on our 5,854 training texts), max length 128. Their extra preprocessing (lowercasing, stop-word removal, emoji words) is not reproduced; our normalization is used. Trained on our frozen sentiment splits. Pre-registered test.",
+  "model_name": "bert-base-multilingual-cased",
+  "tasks": [
+    "sentiment"
+  ],
+  "model": {
+    "pooling": "cls"
+  },
+  "seeds": [
+    13,
+    21,
+    42
+  ],
+  "evaluate_test": true,
+  "save_checkpoint": false,
+  "train": {
+    "epochs": 3,
+    "batch_size": 8,
+    "encoder_lr": 2e-05,
+    "head_lr": 2e-05,
+    "warmup_ratio": 0.228,
+    "weight_decay": 0.01,
+    "patience": 3,
+    "amp": false,
+    "max_len": {
+      "sentiment": 128
+    }
+  },
+  "seed": 42,
+  "limit": null,
+  "resolved_train_config": {
+    "kind": "transformer",
+    "epochs": 3,
+    "batch_size": 8,
+    "lr": 0.002,
+    "encoder_lr": 2e-05,
+    "head_lr": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.228,
+    "grad_clip": 1.0,
+    "patience": 3,
+    "seed": 42,
+    "loss_weights": {
+      "sentiment": 1.0
+    },
+    "max_len": {
+      "sentiment": 128,
+      "emotion": 64,
+      "risk": 128
+    },
+    "device": "cuda",
+    "smoke": false,
+    "truncation": {},
+    "head_tokens": 64,
+    "amp": false,
+    "deterministic": false,
+    "save_checkpoint": false,
+    "resume_every_s": 600
+  }
+}
