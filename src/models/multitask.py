@@ -93,11 +93,21 @@ class MultiTaskBiLSTM(MultiTaskBase):
 class MultiTaskTransformer(MultiTaskBase):
     kind = "transformer"
 
-    def __init__(self, encoder, name: str, shared_dim=256, dropout=0.1, tasks=tuple(TASK_LABELS)):
+    def __init__(self, encoder, name: str, shared_dim=256, dropout=0.1, tasks=tuple(TASK_LABELS), pooling="mean_max"):
         hid = encoder.config.hidden_size
-        super().__init__(rep_dim=2 * hid, shared_dim=shared_dim, dropout=dropout, tasks=tasks)
+        if pooling == "cls":  # [CLS] -> Dropout -> linear head per task (standard sequence-classification head)
+            super().__init__(rep_dim=hid, shared_dim=hid, dropout=dropout, tasks=tasks)
+            self.shared = nn.Dropout(dropout)
+        elif pooling == "mean_max":
+            super().__init__(rep_dim=2 * hid, shared_dim=shared_dim, dropout=dropout, tasks=tasks)
+        else:
+            raise ValueError(f"unknown pooling {pooling!r}")
         self.encoder = encoder
-        self.config = dict(name=name, shared_dim=shared_dim, dropout=dropout, tasks=list(tasks))
+        self.pooling = pooling
+        self.config = dict(name=name, shared_dim=shared_dim, dropout=dropout, tasks=list(tasks), pooling=pooling)
+
+    def _pool(self, h, attention_mask):
+        return h[:, 0] if self.pooling == "cls" else masked_mean_max(h, attention_mask)
 
     @classmethod
     def from_pretrained(cls, name: str, **kw):
@@ -107,11 +117,11 @@ class MultiTaskTransformer(MultiTaskBase):
 
     def encode_tokens(self, input_ids, attention_mask):
         h = self.encoder(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
-        return masked_mean_max(h, attention_mask)
+        return self._pool(h, attention_mask)
 
     def forward_from_embeddings(self, embeds, attention_mask, task):
         h = self.encoder(inputs_embeds=embeds, attention_mask=attention_mask).last_hidden_state
-        return self.heads[task](self.shared(masked_mean_max(h, attention_mask)))
+        return self.heads[task](self.shared(self._pool(h, attention_mask)))
 
     def embedding_layer(self):
         return self.encoder.get_input_embeddings()
