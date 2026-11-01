@@ -1,0 +1,26 @@
+{
+  "name": "E5_3_xlmr_large_emotion_tuned",
+  "plan_id": "E5.3",
+  "description": "Stage 2, pre-registered test: XLM-R large at the encoder LR chosen on validation in E5.1 (filled in by scripts/e5_tune.py; null until then). Equal budget for both encoders: up to 8 epochs with early stopping (patience 2) on validation emotion macro-F1, fp16 autocast, batch 16, same head and head LR, three encoder LRs each. Added because every E4.1 and E4.4 run peaked at its last (third) epoch.",
+  "model_name": "FacebookAI/xlm-roberta-large",
+  "tasks": [
+    "emotion"
+  ],
+  "seeds": [
+    13,
+    21,
+    42
+  ],
+  "evaluate_test": true,
+  "train": {
+    "epochs": 8,
+    "batch_size": 16,
+    "encoder_lr": null,
+    "head_lr": 0.0005,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "patience": 2,
+    "amp": true
+  },
+  "save_checkpoint": false
+}

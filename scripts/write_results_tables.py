@@ -8,6 +8,7 @@ Runs the pre-registered comparisons with the paired bootstrap (src/experiments/a
   E4.2 E4_2_mbert_garg2026_sentiment (2026 Hinglish recipe) vs C_ST_sentiment_hingroberta TEST (pre-registered)
   E4.3 E4_3_mbert_sentiment vs C_ST_sentiment_hingroberta / E4_2                   TEST (pre-registered)
   E4.4 C_ST_emotion_muril and E4_1 vs E4_4_xlmr_large_emotion                      TEST (pre-registered)
+  E5   E5_4 (IndicBERT v2, tuned) vs E5_3 (XLM-R large, tuned); each vs its E4 run  TEST (pre-registered)
 """
 import json
 import sys
@@ -39,6 +40,11 @@ COMPARISONS = [
 ] + [("E4.3", "E4_3_mbert_sentiment", "C_ST_sentiment_hingroberta", "test", "sentiment", "macro_f1", s) for s in SENT_SCOPES
 ] + [("E4.3", "E4_2_mbert_garg2026_sentiment", "E4_3_mbert_sentiment", "test", "sentiment", "macro_f1", s) for s in SENT_SCOPES
 ] + [("E4.4", a, "E4_4_xlmr_large_emotion", "test", "emotion", "macro_f1", s) for a in ("C_ST_emotion_muril", "E4_1_indicbertv2_single_emotion")
+     for s in (None, "language:en-Latn", "language:hi-Deva")
+] + [("E5", a, b, "test", "emotion", "macro_f1", s)
+     for a, b in (("E5_4_indicbertv2_emotion_tuned", "E5_3_xlmr_large_emotion_tuned"),
+                  ("E4_4_xlmr_large_emotion", "E5_3_xlmr_large_emotion_tuned"),
+                  ("E4_1_indicbertv2_single_emotion", "E5_4_indicbertv2_emotion_tuned"))
      for s in (None, "language:en-Latn", "language:hi-Deva")]
 
 

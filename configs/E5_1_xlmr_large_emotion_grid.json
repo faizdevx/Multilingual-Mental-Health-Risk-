@@ -1,0 +1,31 @@
+{
+  "name": "E5_1_xlmr_large_emotion_grid",
+  "plan_id": "E5.1",
+  "description": "Stage 1, validation only, seed 13: XLM-R large encoder-LR grid around its E4.4 value. Equal budget for both encoders: up to 8 epochs with early stopping (patience 2) on validation emotion macro-F1, fp16 autocast, batch 16, same head and head LR, three encoder LRs each. Added because every E4.1 and E4.4 run peaked at its last (third) epoch.",
+  "model_name": "FacebookAI/xlm-roberta-large",
+  "tasks": [
+    "emotion"
+  ],
+  "seeds": [
+    13
+  ],
+  "evaluate_test": false,
+  "train": {
+    "epochs": 8,
+    "batch_size": 16,
+    "encoder_lr": 1e-05,
+    "head_lr": 0.0005,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "patience": 2,
+    "amp": true
+  },
+  "grid": {
+    "encoder_lr": [
+      7e-06,
+      1e-05,
+      2e-05
+    ]
+  },
+  "save_checkpoint": false
+}
