@@ -1,0 +1,26 @@
+{
+  "name": "E4_3_mbert_sentiment",
+  "plan_id": "E4.3",
+  "description": "mBERT (bert-base-multilingual-cased) with our head and hyperparameters (same as C_ST_sentiment_muril / C_ST_sentiment_hingroberta), to separate the encoder from the recipe of E4.2. Pre-registered test.",
+  "model_name": "bert-base-multilingual-cased",
+  "tasks": [
+    "sentiment"
+  ],
+  "seeds": [
+    13,
+    21,
+    42
+  ],
+  "evaluate_test": true,
+  "save_checkpoint": false,
+  "train": {
+    "epochs": 3,
+    "batch_size": 16,
+    "encoder_lr": 3e-05,
+    "head_lr": 0.0005,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "patience": 2,
+    "amp": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "E4_4_xlmr_large_emotion",
+  "plan_id": "E4.4",
+  "description": "Single-task XLM-R large emotion on a cloud GPU (fp16 autocast), lr 1e-5 for stability of the large model; otherwise the same head and protocol as C_ST_emotion_muril and E4_1. Tests whether a larger encoder closes the gap to the BRIGHTER English baseline. Pre-registered test.",
+  "model_name": "FacebookAI/xlm-roberta-large",
+  "tasks": [
+    "emotion"
+  ],
+  "seeds": [
+    13,
+    21,
+    42
+  ],
+  "evaluate_test": true,
+  "save_checkpoint": false,
+  "train": {
+    "epochs": 3,
+    "batch_size": 16,
+    "encoder_lr": 1e-05,
+    "head_lr": 0.0005,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "patience": 2,
+    "amp": true
+  }
+}

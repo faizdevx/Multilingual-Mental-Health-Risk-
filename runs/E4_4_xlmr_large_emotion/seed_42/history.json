@@ -1,0 +1,100 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "seconds": 114.4,
+      "train_loss": {
+        "emotion": 0.5785763627365522,
+        "total_weighted": 0.5785763627365522
+      },
+      "val_loss": {
+        "emotion": 0.28036245703697205,
+        "total_weighted": 0.28036245703697205
+      },
+      "val": {
+        "emotion": {
+          "accuracy": null,
+          "macro_f1": 0.740144145955095,
+          "weighted_f1": 0.7513642027408665,
+          "pr_auc": null
+        }
+      },
+      "val_mean_macro_f1": 0.740144145955095,
+      "resumed_within_epoch": false
+    },
+    {
+      "epoch": 2,
+      "seconds": 114.2,
+      "train_loss": {
+        "emotion": 0.3260040193319011,
+        "total_weighted": 0.3260040193319011
+      },
+      "val_loss": {
+        "emotion": 0.24415220320224762,
+        "total_weighted": 0.24415220320224762
+      },
+      "val": {
+        "emotion": {
+          "accuracy": null,
+          "macro_f1": 0.7837088497092072,
+          "weighted_f1": 0.7849751727762821,
+          "pr_auc": null
+        }
+      },
+      "val_mean_macro_f1": 0.7837088497092072,
+      "resumed_within_epoch": false
+    },
+    {
+      "epoch": 3,
+      "seconds": 114.5,
+      "train_loss": {
+        "emotion": 0.2385975680262018,
+        "total_weighted": 0.2385975680262018
+      },
+      "val_loss": {
+        "emotion": 0.22890064120292664,
+        "total_weighted": 0.22890064120292664
+      },
+      "val": {
+        "emotion": {
+          "accuracy": null,
+          "macro_f1": 0.7935817292658308,
+          "weighted_f1": 0.7958453802860523,
+          "pr_auc": null
+        }
+      },
+      "val_mean_macro_f1": 0.7935817292658308,
+      "resumed_within_epoch": false
+    }
+  ],
+  "class_balance": {
+    "emotion": {
+      "strategy": "BCE with pos_weight = clip(sqrt(neg/pos), 1, 5), computed per label over annotated rows only",
+      "positives": [
+        654,
+        228,
+        1730,
+        965,
+        1159,
+        968
+      ],
+      "negatives": [
+        3968,
+        2015,
+        2892,
+        3657,
+        3463,
+        3654
+      ],
+      "pos_weight": [
+        2.463,
+        2.973,
+        1.293,
+        1.947,
+        1.729,
+        1.943
+      ]
+    }
+  },
+  "best_val_mean_macro_f1": 0.7935817292658308
+}
